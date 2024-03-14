@@ -1,0 +1,32 @@
+---
+const links = [
+    { href: "/", name: "Home" },
+    { href: "/profile", name: "Profile" },
+    { href: "/contact", name: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<heading class="flex justify-center py-8 fixed w-full z-50">
+    <nav
+        class="glass bg-yellow bg-opacity-50 p-1 rounded-3xl grid grid-cols-3 gap-5"
+    >
+        {
+            links.map((link) => (
+                <a
+                    href={link.href}
+                    class={`${currentPath === link.href ? "bg-white bg-opacity-50" : ""} p-2 px-4 rounded-2xl text-sm text-center`}
+                >
+                    {link.name}
+                </a>
+            ))
+        }
+    </nav>
+</heading>
+
+<style>
+    .glass {
+        backdrop-filter: blur(10px);
+    }
+</style>

@@ -1,0 +1,27 @@
+---
+import GlassCard from "./GlassCard.astro";
+
+const data = [
+  {
+    name: "Aire",
+    href: "/projects/aire",
+    src: "/projects/aire.webp",
+  },
+  {
+    name: "Correlated",
+    href: "/projects/correlated",
+    src: "/projects/correlated.webp",
+  },
+  {
+    name: "Logo",
+    href: "/projects/logo",
+    src: "/projects/logo.mp4",
+  },
+];
+---
+
+<section class="px-5 md:px-10 xl:px-20 md:mb-10 lg:mb-20">
+  <div class="grid lg:grid-cols-2 gap-5 md:gap-10">
+    {data.map((item, index) => <GlassCard {...item} />)}
+  </div>
+</section>

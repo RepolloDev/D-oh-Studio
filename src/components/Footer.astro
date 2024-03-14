@@ -1,0 +1,39 @@
+---
+import socialInfo from "../data/socials";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const socials = Object.entries(socialInfo);
+// ð is the joke symbol for the copyRight
+const copyRight = `ð Homer J. Simpson ${new Date().getFullYear()}`;
+---
+
+<footer class={className ?? null}>
+  <div
+    class="flex flex-col md:flex-row w-full p-10 px-16 items-center gap-5 mb-10 md:m-0"
+  >
+    <img
+      class="inline-block w-10 h-10 select-none"
+      src="/gordov.svg"
+      alt="Logo de Homero simpson"
+    />
+    <span> {copyRight}</span>
+    <nav class="class flex gap-5 md:ml-auto">
+      {
+        socials.map(([social, info]) => (
+          <a
+            href={info.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-sans"
+          >
+            {social.charAt(0).toUpperCase() + social.slice(1)}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</footer>

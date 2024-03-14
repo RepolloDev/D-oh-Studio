@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import HeroSection from "../components/home/HeroSection.astro";
+import ProjectsSecion from "../components/home/ProjectsSecion.astro";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="My page">
+  <a
+    href="https://www.amazon.com/"
+    class="bg-base text-slate-50 font-sans text-center rounded-2xl p-2 px-4 float-button flex items-center gap-2"
+  >
+    <img src="/icons/shop.svg" class="w-5 h-5" />
+    <span> Shop </span>
+  </a>
+  <Navbar />
+  <main>
+    <HeroSection />
+    <ProjectsSecion />
+    <ContactSection
+      class="md:mb-10 lg:mb-20 text-2xl sm:text-3xl md:text-4xl"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .float-button {
+    position: fixed;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 50;
+  }
+</style>

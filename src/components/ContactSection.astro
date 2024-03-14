@@ -1,0 +1,48 @@
+---
+import socialInfo from "../data/socials";
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div
+    class={`flex flex-col items-center justify-center py-32 ${className ?? "text-4xl"}`}
+>
+    <h2 class="font-semibold text-center">Vamos por un cerbeza</h2>
+    <h2
+        class="font-semibold text-center text-brown hover:text-opacity-80 transition-all"
+    >
+        <a
+            class="mail relative transition-all flex"
+            target="_blank"
+            type="mail"
+            href={`${socialInfo.mail.url}`}>A mi no me das toques.</a
+        >
+    </h2>
+</div>
+
+<style>
+    .mail::after {
+        content: "Pongase en contaco 📬";
+        position: absolute;
+        top: 0%;
+        left: -5%;
+        width: 0%;
+        padding: 0.5rem 0;
+        background-color: #1e66f5;
+        color: white;
+        overflow: hidden;
+        transition: all 0.15s ease-in-out;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: start;
+    }
+
+    .mail:hover::after {
+        width: 110%;
+        padding: 0.5rem;
+    }
+</style>

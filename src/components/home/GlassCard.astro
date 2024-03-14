@@ -1,0 +1,51 @@
+---
+interface Props {
+  src: string;
+  href: string;
+  name: string;
+}
+
+const { src, href, name } = Astro.props;
+
+const imageExtensions = ["jpg", "jpeg", "png", "gif", "webp", "svg"];
+const videoExtensions = ["mp4", "webm", "ogg"];
+
+const isImage = imageExtensions.some((ext) => src.endsWith(ext));
+const isVideo = videoExtensions.some((ext) => src.endsWith(ext));
+---
+
+<div class="relative rounded-xl overflow-hidden">
+  <a
+    href={href}
+    class="glass absolute p-8 w-full h-full transition-all duration-300 z-10 text-white opacity-0 hover:opacity-100 flex justify-between group"
+  >
+    <span>{name}</span>
+    <span
+      class="rounded-full bg-white block w-max h-max p-2 transition-all duration-500 fade-arrow"
+    >
+      <img class="w-5 h-5" src="/icons/arrow.svg" alt="arrow icon" />
+    </span>
+  </a>
+  {isImage && <img class="source" src={src} alt={name} />}
+  {isVideo && <video autoplay muted class="source" src={src} />}
+  {!isImage && !isVideo && <p>Unsupported file type</p>}
+</div>
+
+<style>
+  .source {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .glass:hover {
+    /* glass effect */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+  }
+  .fade-arrow {
+    transform: translate(-50%, 50%);
+  }
+  .group:hover .fade-arrow {
+    transform: translate(0, 0);
+  }
+</style>

@@ -1,4 +1,6 @@
 ---
+import Media from "./Media.astro";
+
 interface Props {
   src: string;
   href: string;
@@ -6,12 +8,6 @@ interface Props {
 }
 
 const { src, href, name } = Astro.props;
-
-const imageExtensions = ["jpg", "jpeg", "png", "gif", "webp", "svg"];
-const videoExtensions = ["mp4", "webm", "ogg"];
-
-const isImage = imageExtensions.some((ext) => src.endsWith(ext));
-const isVideo = videoExtensions.some((ext) => src.endsWith(ext));
 ---
 
 <div class="relative rounded-xl overflow-hidden">
@@ -26,9 +22,7 @@ const isVideo = videoExtensions.some((ext) => src.endsWith(ext));
       <img class="w-5 h-5" src="/icons/arrow.svg" alt="arrow icon" />
     </span>
   </a>
-  {isImage && <img class="source" src={src} alt={name} />}
-  {isVideo && <video autoplay muted class="source" src={src} />}
-  {!isImage && !isVideo && <p>Unsupported file type</p>}
+  <Media src={src} class="source" />
 </div>
 
 <style>

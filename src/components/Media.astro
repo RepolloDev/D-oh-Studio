@@ -1,0 +1,18 @@
+---
+interface Props {
+  src: string;
+  class?: string;
+}
+
+const { src, class: className } = Astro.props;
+
+const imageExtensions = ["jpg", "jpeg", "png", "gif", "webp", "svg"];
+const videoExtensions = ["mp4", "webm", "ogg"];
+
+const isImage = imageExtensions.some((ext) => src.endsWith(ext));
+const isVideo = videoExtensions.some((ext) => src.endsWith(ext));
+---
+
+{isImage && <img class:list={[className]} src={src} />}
+{isVideo && <video autoplay muted class:list={[className]} src={src} />}
+{!isImage && !isVideo && <p>Unsupported file type</p>}

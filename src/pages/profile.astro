@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
+import Footer from "../components/Footer.astro";
+import Tag from "../components/Tag.astro";
+---
+
+<Layout title="Home">
+  <Navbar />
+  <main>
+    <section
+      class="w-full h-[75dvh] relative flex flex-col items-center justify-center mb-20"
+    >
+      <h1
+        class="text-7xl font-bold text-center w-[20ch] mt-40 mb-10 leading-tight"
+      >
+        Hola 👋 Soy Homero
+      </h1>
+    </section>
+    <div class="grid grid-cols-2 gap-5 mb-52">
+      <img class="rounded-xl" src="/images/in-job.webp" />
+      <img class="rounded-xl" src="/images/random.webp" />
+    </div>
+
+    <section class="mb-52 flex items-center flex-col w-full">
+      <Tag>Sobre mi</Tag>
+      <h2 class="font-bold text-3xl max-w-[42ch] text-center my-8">
+        ¡Soy Homero J. Simpson, el hombre más grande de Springfield! Trabajo en
+        la planta nuclear y amo las cervezas Duff, los rosquillas y ver la tele
+        en el sofá. Puede que no sea el más listo, ¡pero tengo un gran corazón!
+        D'oh!
+      </h2>
+    </section>
+    <section class="mb-52 flex items-center flex-col w-full">
+        <Tag>Experiencia</Tag>
+        <h2 class="font-bold text-3xl max-w-[42ch] text-center my-8">
+            ¿Dónde he trabajado?
+        </h2>
+        <div>
+            En construcción...
+        </div>
+    </section>
+    <section class="mb-52 flex items-center flex-col w-full">
+        <Tag>Clientes</Tag>
+        <h2 class="font-bold text-3xl max-w-[42ch] text-center my-8">
+            ¿Con quién he trabajado?
+        </h2>
+        <div>
+            En construcción...
+        </div>
+    </section>
+    <ContactSection />
+  </main>
+  <Footer />
+</Layout>
